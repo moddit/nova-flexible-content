@@ -13,3 +13,4 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Changed collapsed behavior
+- On click header collapse or expand FormGroup

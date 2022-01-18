@@ -29215,54 +29215,66 @@ var render = function () {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "-mb-1 flex flex-col min-h-full w-full" }, [
-        _vm.group.title
-          ? _c("div", { class: _vm.titleStyle }, [
-              _c(
-                "div",
-                {
-                  staticClass: "leading-normal py-1 px-8",
-                  class: { "border-b border-40": !_vm.collapsed },
-                },
-                [
-                  _c("p", { staticClass: "text-80" }, [
-                    _c("span", { staticClass: "mr-4 font-semibold" }, [
-                      _vm._v("#" + _vm._s(_vm.index + 1)),
+      _c(
+        "div",
+        {
+          staticClass: "-mb-1 flex flex-col min-h-full w-full",
+          on: {
+            click: function ($event) {
+              $event.preventDefault()
+              return _vm.expand.apply(null, arguments)
+            },
+          },
+        },
+        [
+          _vm.group.title
+            ? _c("div", { class: _vm.titleStyle }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "leading-normal py-1 px-8",
+                    class: { "border-b border-40": !_vm.collapsed },
+                  },
+                  [
+                    _c("p", { staticClass: "text-80" }, [
+                      _c("span", { staticClass: "mr-4 font-semibold" }, [
+                        _vm._v("#" + _vm._s(_vm.index + 1)),
+                      ]),
+                      _vm._v(
+                        "\n                  " +
+                          _vm._s(_vm.group.title) +
+                          "\n                "
+                      ),
                     ]),
-                    _vm._v(
-                      "\n                  " +
-                        _vm._s(_vm.group.title) +
-                        "\n                "
-                    ),
-                  ]),
-                ]
-              ),
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c(
-          "div",
-          { class: _vm.containerStyle },
-          _vm._l(_vm.group.fields, function (item, index) {
-            return _c("form-" + item.component, {
-              key: index,
-              tag: "component",
-              class: {
-                "remove-bottom-border": index == _vm.group.fields.length - 1,
-              },
-              attrs: {
-                "resource-name": _vm.resourceName,
-                "resource-id": _vm.resourceId,
-                resource: _vm.resource,
-                field: item,
-                errors: _vm.errors,
-                "show-help-text": item.helpText != null,
-              },
-            })
-          }),
-          1
-        ),
-      ]),
+                  ]
+                ),
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "div",
+            { class: _vm.containerStyle },
+            _vm._l(_vm.group.fields, function (item, index) {
+              return _c("form-" + item.component, {
+                key: index,
+                tag: "component",
+                class: {
+                  "remove-bottom-border": index == _vm.group.fields.length - 1,
+                },
+                attrs: {
+                  "resource-name": _vm.resourceName,
+                  "resource-id": _vm.resourceId,
+                  resource: _vm.resource,
+                  field: item,
+                  errors: _vm.errors,
+                  "show-help-text": item.helpText != null,
+                },
+              })
+            }),
+            1
+          ),
+        ]
+      ),
     ]
   )
 }

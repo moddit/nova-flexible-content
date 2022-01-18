@@ -61,9 +61,10 @@
                 </div>
             </div>
         </div>
-        <div class="-mb-1 flex flex-col min-h-full w-full" @click.prevent="expand">
+        <div class="-mb-1 flex flex-col min-h-full w-full">
             <div :class="titleStyle" v-if="group.title">
                 <div class="leading-normal py-1 px-8"
+                    @click.prevent="collapsed ? expand() : collapse()"
                     :class="{'border-b border-40': !collapsed}">
                     <p class="text-80">
                       <span class="mr-4 font-semibold">#{{ index + 1 }}</span>

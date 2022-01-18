@@ -28,6 +28,7 @@
             </div>
 
             <component
+                v-if="field.canAddLayouts"
                 :layouts="layouts"
                 :is="field.menu.component"
                 :field="field"

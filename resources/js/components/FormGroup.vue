@@ -20,40 +20,44 @@
                     <icon class="align-top" type="minus-square" width="16" height="16" view-box="0 0 24 24" />
                 </button>
                 <div v-if="!readonly">
-                    <button
-                        dusk="move-up-group"
-                        type="button"
-                        class="group-control btn border-t border-r border-40 w-8 h-8 block"
-                        :title="__('Move up')"
-                        @click.prevent="moveUp">
-                        <icon type="arrow-up" view-box="0 0 8 4.8" width="10" height="10" />
-                    </button>
-                    <button
-                        dusk="move-down-group"
-                        type="button"
-                        class="group-control btn border-t border-r border-40 w-8 h-8 block"
-                        :title="__('Move down')"
-                        @click.prevent="moveDown">
-                        <icon type="arrow-down" view-box="0 0 8 4.8" width="10" height="10" />
-                    </button>
-                    <button
-                        dusk="delete-group"
-                        type="button"
-                        class="group-control btn border-t border-r border-40 w-8 h-8 block"
-                        :title="__('Delete')"
-                        @click.prevent="confirmRemove">
-                        <icon type="delete" view-box="0 0 20 20" width="16" height="16" />
-                    </button>
-                    <portal to="modals">
-                        <delete-flexible-content-group-modal
-                            v-if="removeMessage"
-                            @confirm="remove"
-                            @close="removeMessage=false"
-                            :message="field.confirmRemoveMessage"
-                            :yes="field.confirmRemoveYes"
-                            :no="field.confirmRemoveNo"
-                        />
-                    </portal>
+                    <template v-if="field.canReorder">
+                        <button
+                            dusk="move-up-group"
+                            type="button"
+                            class="group-control btn border-t border-r border-40 w-8 h-8 block"
+                            :title="__('Move up')"
+                            @click.prevent="moveUp">
+                            <icon type="arrow-up" view-box="0 0 8 4.8" width="10" height="10" />
+                        </button>
+                        <button
+                            dusk="move-down-group"
+                            type="button"
+                            class="group-control btn border-t border-r border-40 w-8 h-8 block"
+                            :title="__('Move down')"
+                            @click.prevent="moveDown">
+                            <icon type="arrow-down" view-box="0 0 8 4.8" width="10" height="10" />
+                        </button>
+                    </template>
+                    <template v-if="field.canRemove">
+                        <button
+                            dusk="delete-group"
+                            type="button"
+                            class="group-control btn border-t border-r border-40 w-8 h-8 block"
+                            :title="__('Delete')"
+                            @click.prevent="confirmRemove">
+                            <icon type="delete" view-box="0 0 20 20" width="16" height="16" />
+                        </button>
+                        <portal to="modals">
+                            <delete-flexible-content-group-modal
+                                v-if="removeMessage"
+                                @confirm="remove"
+                                @close="removeMessage=false"
+                                :message="field.confirmRemoveMessage"
+                                :yes="field.confirmRemoveYes"
+                                :no="field.confirmRemoveNo"
+                            />
+                        </portal>
+                    </template>
                 </div>
             </div>
         </div>

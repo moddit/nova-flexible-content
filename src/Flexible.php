@@ -69,7 +69,12 @@ class Flexible extends Field
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
+        // Set defaults
         $this->button(__('Add layout'));
+        $this->canRemoveLayouts(true);
+        $this->canReorderLayouts(true);
+        $this->canAddLayouts(true);
+        $this->collapsed(false);
 
         // The original menu as default
         $this->menu('flexible-drop-menu');
@@ -98,6 +103,39 @@ class Flexible extends Field
     public function button($label)
     {
         return $this->withMeta(['button' => $label]);
+    }
+
+    /**
+     * Determine if user can remove layouts
+     *
+     * @param bool $canRemove
+     * @return $this
+     */
+    public function canRemoveLayouts($canRemove = true)
+    {
+        return $this->withMeta(['canRemove' => $canRemove]);
+    }
+
+    /**
+     * Determine if user can reorder layouts
+     *
+     * @param bool $canReorder
+     * @return $this
+     */
+    public function canReorderLayouts($canReorder = true)
+    {
+        return $this->withMeta(['canReorder' => $canReorder]);
+    }
+
+    /**
+     * Determine if user can add layouts
+     *
+     * @param bool $canAddLayouts
+     * @return $this
+     */
+    public function canAddLayouts($canAddLayouts = true)
+    {
+        return $this->withMeta(['canAddLayouts' => $canAddLayouts]);
     }
 
     /**

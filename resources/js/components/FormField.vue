@@ -75,9 +75,9 @@ export default {
             }
 
             // if all layouts reached their limitPerLayout, remove the "Add" button
-            if (Object.values(this.limitPerLayoutCounter).reduce((a, b) => a + b, 0) <= 0) {
-                return 0;
-            }
+            // if (Object.values(this.limitPerLayoutCounter).reduce((a, b) => a + b, 0) <= 0) {
+            //     return 0;
+            // }
 
             return this.field.limit - Object.keys(this.groups).length;
         },

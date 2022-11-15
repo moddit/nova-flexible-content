@@ -5,7 +5,6 @@ namespace Whitecube\NovaFlexibleContent\Concerns;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
 use Whitecube\NovaFlexibleContent\Layouts\Collection;
 use Illuminate\Support\Collection as BaseCollection;
-use Laravel\Nova\NovaServiceProvider;
 use Whitecube\NovaFlexibleContent\Value\FlexibleCast;
 
 trait HasFlexible {
@@ -32,22 +31,6 @@ trait HasFlexible {
      * @return \Whitecube\NovaFlexibleContent\Layouts\Collection
      */
     public function cast($value, $layoutMapping = [])
-    {
-        if(app()->getProvider(NovaServiceProvider::class) && !app()->runningInConsole() && !app()->environment('testing')) {
-            return $value;
-        }
-
-        return $this->toFlexible($value ?: null, $layoutMapping);
-    }
-
-    /**
-     * Parse a Flexible Content from value
-     *
-     * @param mixed $value
-     * @param array $layoutMapping
-     * @return \Whitecube\NovaFlexibleContent\Layouts\Collection
-     */
-    public function toFlexible($value, $layoutMapping = [])
     {
         $flexible = $this->getFlexibleArrayFromValue($value);
 
